@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CustomList
+namespace CustomCollections
 {
     class Program
     {
