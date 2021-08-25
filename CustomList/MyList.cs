@@ -126,7 +126,7 @@ namespace CustomList
                 {
                     for(int j = i; j < size; j++)
                     {
-                        arr[i] = arr[i + 1];
+                        arr[j] = arr[j + 1];
                     }
                     size--;
                     return true;
@@ -139,6 +139,10 @@ namespace CustomList
         {
             ThrowIfIndexOutOfRange(index);
             arr[index] = default(T);
+            for (int j = index; j < size; j++)
+            {
+                arr[j] = arr[j + 1];
+            }
             size--;
         }
 
