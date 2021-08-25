@@ -70,25 +70,12 @@ namespace CustomList
         public void CopyTo(T[] array, int arrayIndex)
         {
             Array.Copy(arr, 0, array, arrayIndex, size);
-            //ThrowIfIndexOutOfRange(arrayIndex);
-            //int temp = arrayIndex;
-            //for(int i = 0; i < size; i++)
-            //{
-            //    array[temp] = arr[i];
-            //    temp++;
-            //}
         }
-        private IEnumerable<T> GetValues()
-        {
-            for (int i = 0; i < size; i++)
-            {
-                yield return arr[i];
-            }
-        }
+        
 
         public IEnumerator<T> GetEnumerator()
         {
-            return GetValues().GetEnumerator();
+            return new MyListEnum<T>(this);
         }
 
         public int IndexOf(T item)
@@ -167,6 +154,45 @@ namespace CustomList
             {
                 throw new ArgumentOutOfRangeException(string.Format("The current size of the array is {0}", size));
             }
+        }
+    }
+
+    class MyListEnum<T> : IEnumerator<T>
+    {
+        private MyList<T> collection;
+        private int curIndex;
+        private T curItem;
+        public MyListEnum(MyList<T> ml)
+        {
+            collection = ml;
+            curIndex = -1;
+            curItem = default(T);
+        }
+        public T Current => curItem;
+
+        object IEnumerator.Current => Current;
+
+        public void Dispose()
+        {
+            
+        }
+
+        public bool MoveNext()
+        {
+            if (++curIndex >= collection.Count)
+            {
+                return false;
+            }
+            else
+            {
+                curItem = collection[curIndex];
+            }
+            return true;
+        }
+
+        public void Reset()
+        {
+            curIndex = -1;
         }
     }
 }
