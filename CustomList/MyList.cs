@@ -21,13 +21,21 @@ namespace CustomList
         }
         public T this[int index] 
         {
-            get => arr[index]; 
-            set => arr[index] = value; 
+            get 
+            {
+                ThrowIfIndexOutOfRange(index);
+                return arr[index];
+            } 
+            set
+            {
+                ThrowIfIndexOutOfRange(index);
+                arr[index] = value;
+            }
         }
 
         public int Count => size;
 
-        public bool IsReadOnly => IsReadOnly;
+        public bool IsReadOnly => false;
 
         public void Add(T item)
         {
@@ -61,13 +69,14 @@ namespace CustomList
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-            ThrowIfIndexOutOfRange(arrayIndex);
-            int temp = arrayIndex;
-            for(int i = 0; i < size; i++)
-            {
-                array[temp] = arr[i];
-                temp++;
-            }
+            Array.Copy(arr, 0, array, arrayIndex, size);
+            //ThrowIfIndexOutOfRange(arrayIndex);
+            //int temp = arrayIndex;
+            //for(int i = 0; i < size; i++)
+            //{
+            //    array[temp] = arr[i];
+            //    temp++;
+            //}
         }
         private IEnumerable<T> GetValues()
         {
@@ -115,7 +124,10 @@ namespace CustomList
                 T currentVal = arr[i];
                 if (currentVal.Equals(item))
                 {
-                    arr[i] = default(T);
+                    for(int j = i; j < size; j++)
+                    {
+                        arr[i] = arr[i + 1];
+                    }
                     size--;
                     return true;
                 }
