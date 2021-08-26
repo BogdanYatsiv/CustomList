@@ -15,7 +15,7 @@ namespace MyCollectionsTests
         {
             MyLinkedList<int> l = new();
 
-            Assert.Equal(0, l.Count);
+            Assert.NotNull(l);
         }
 
         [Fact]
