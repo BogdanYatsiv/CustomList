@@ -56,6 +56,7 @@ namespace CustomCollections
                 if(index == 0)
                 {
                     head.value = value;
+                    return;
                 }
                 else
                 {
@@ -67,6 +68,7 @@ namespace CustomCollections
                         if (pointer == index) 
                         {
                             pointerNode.value = value;
+                            return;
                         } 
                         else
                         {

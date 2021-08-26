@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomCollections
 {
-    class MyStack<T> : IEnumerable<T>
+    public class MyStack<T> : IEnumerable<T>
     {
         private T[] data;
         private int size;

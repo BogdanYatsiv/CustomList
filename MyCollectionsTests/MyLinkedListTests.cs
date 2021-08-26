@@ -19,6 +19,63 @@ namespace MyCollectionsTests
         }
 
         [Fact]
+        public void indexingGetTest()
+        {
+            MyLinkedList<int> l = new();
+
+            l.Add(1);
+            l.Add(2);
+            l.Add(3);
+
+            Assert.Equal(3, l[0]);
+            Assert.Equal(2, l[1]);
+            Assert.Equal(1, l[2]);
+        }
+
+        [Fact]
+        public void falseIndexingGetTest()
+        {
+            MyLinkedList<int> l = new();
+
+            l.Add(1);
+            l.Add(2);
+            l.Add(3);
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => l[-1]);
+            Assert.Throws<ArgumentOutOfRangeException>(() => l[5]);
+        }
+
+        [Fact]
+        public void indexingSetTest()
+        {
+            MyLinkedList<int> l = new();
+
+            l.Add(1);
+            l.Add(2);
+            l.Add(3);
+            l[0] = 4;
+            l[1] = 5;
+            l[2] = 6;
+
+            Assert.Contains(4, l);
+            Assert.Contains(5, l);
+            Assert.Contains(6, l);
+        }
+
+        [Fact]
+        public void falseIndexingSetTest()
+        {
+            MyLinkedList<int> l = new();
+
+            l.Add(1);
+            l.Add(2);
+            l.Add(3);
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => l[-1] = 0);
+            Assert.Throws<ArgumentOutOfRangeException>(() => l[5] = 0);
+        }
+
+        [Fact]
         public void addTest()
         {
             MyLinkedList<int> l = new();
