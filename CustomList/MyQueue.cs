@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomCollections
 {
-    class MyQueue<T> : IEnumerable<T>
+    public class MyQueue<T> : IEnumerable<T>
     {
         private T[] data;
         private int size;
@@ -48,6 +48,7 @@ namespace CustomCollections
                 {
                     data[i] = item;
                     size++;
+                    return;
                 }
                 else
                 {
@@ -61,6 +62,7 @@ namespace CustomCollections
         {
             T[] newData = new T[data.Length];
             data = newData;
+            size = 0;
         }
 
         public IEnumerator<T> GetEnumerator()
