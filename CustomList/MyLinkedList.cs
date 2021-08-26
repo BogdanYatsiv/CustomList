@@ -11,6 +11,9 @@ namespace CustomCollections
     {
         internal T value;
         internal ListNode<T> next;
+
+        public T Value => value;
+
         public ListNode(T v)
         {
             value = v;
@@ -92,6 +95,7 @@ namespace CustomCollections
             if (head.next != null)
             {
                 head.next = null;
+                head.value = default(T);
                 size = 0;
             }
         }
@@ -153,6 +157,7 @@ namespace CustomCollections
 
             return -1;
         }
+
         public ListNode<T> GetNode(int index)
         {
             ThrowIfIndexOutOfRange(index);
@@ -190,17 +195,20 @@ namespace CustomCollections
             else 
             {
                 ListNode<T> temp = head.next;
+                ListNode<T> prev = head;
                 int iter = 1;
 
                 while (temp != null)
                 {
-                    if (iter == index)
+                    if (iter == index )
                     {
-                        newNode.next = temp.next;
-                        temp.next = newNode;
+                        newNode.next = temp;
+                        prev.next = newNode;
                         size++;
                         return;
                     }
+                    iter++;
+                    prev = temp;
                     temp = temp.next;
                 }
             }
