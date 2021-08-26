@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomCollections
 {
-    class MyList<T> : IList<T>
+    public class MyList<T> : IList<T>
     {
         private T[] arr;
         private int size;
@@ -32,6 +32,8 @@ namespace CustomCollections
                 arr[index] = value;
             }
         }
+
+        public int Capacity => capacity;
 
         public int Count => size;
 

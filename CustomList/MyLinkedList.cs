@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomCollections
 {
-    class ListNode<T>
+    public class ListNode<T>
     {
         internal T value;
         internal ListNode<T> next;
@@ -17,7 +17,7 @@ namespace CustomCollections
             next = null;
         }
     }
-    class MyLinkedList<T> : IList<T>
+    public class MyLinkedList<T> : IList<T>
     {
         internal ListNode<T> head;
         private int size = 0;
