@@ -43,8 +43,8 @@ namespace CustomCollections
             if (size == 0) throw new Exception("Stack is empty!");
             else
             {
-                T value = data[size];
-                data[size] = default(T);
+                T value = data[size-1];
+                data[size-1] = default(T);
                 size--;
 
                 return value;
