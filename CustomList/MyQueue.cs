@@ -30,8 +30,10 @@ namespace CustomCollections
         public int Count => size;
         public T Dequeue()
         {
-            T item = data[size];
-            data[size] = default(T);
+            if(size == 0) throw new Exception("Queue is empty!");
+
+            T item = data[size-1];
+            data[size-1] = default(T);
             size--;
             return item;
         }
@@ -47,7 +49,11 @@ namespace CustomCollections
                     data[i] = item;
                     size++;
                 }
-                data[i] = data[i - 1];
+                else
+                {
+                    data[i] = data[i - 1];
+                }
+                
             }
         }
 

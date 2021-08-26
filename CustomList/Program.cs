@@ -65,7 +65,34 @@ namespace CustomCollections
                 Console.WriteLine(e.Message);
             }
 
-            Console.WriteLine("\n"+stack.Count);
+            Console.WriteLine("\n" + stack.Count + "\n");
+
+            MyQueue<int> q = new MyQueue<int>();
+            q.Enqueue(1);
+            q.Enqueue(2);
+            q.Enqueue(3);
+            Console.WriteLine("MyQueue");
+            Console.WriteLine(q.Count + "\n");
+
+            foreach(var v in q)
+            {
+                Console.Write(v + " ");
+            }
+            Console.WriteLine("\n");
+            Console.WriteLine(q.Dequeue());
+            Console.WriteLine(q.Dequeue());
+            Console.WriteLine(q.Dequeue());
+
+            try
+            {
+                Console.WriteLine(q.Dequeue());
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            Console.WriteLine("\n" + q.Count + "\n");
         }
     }
 }
